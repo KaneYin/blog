@@ -1344,9 +1344,6 @@ spring.servlet.multipart.max-request-size=100MB
 2. 参照官方 SDK 编写入门程序
 3. 项目中集成使用
 
-AccessKey ID: LTAI5t9ETp3Yfjcae8L1gV5p
-AccessKey Secret: uRMzCa1s3VlnJnA3FyAp99JNGAM0PA
-
 **使用阿里云 OSS 集成文件上传功能：**
 
 文件上传模块小结：
@@ -1386,22 +1383,12 @@ Emp select(Integer id);
 ### 配置文件
 #### 问题分析
 我们在使用阿里云 OSS 服务的时候，需要配置下面几个参数：
-```java
-private String endpoint = "https://oss-cn-beijing.aliyuncs.com"; 
-private String accessKeyId = "LTAI5t9ETp3Yfjcae8L1gV5p";  
-private String accessKeySecret = "uRMzCa1s3VlnJnA3FyAp99JNGAM0PA";  
-private String bucketName = "hmleadnews-kane";
-```
+
 但是实际在项目开发中，如果把所有使用到的技术涉及的参数都通过硬编码的方式写在各个不同的 Java 文件中，对于后期更新参数内容，每一次都需要重新编译生成项目的字节码文件，然后再重新运行。这样的硬编码配置参数的模式是不便于程序员后期维护的。
 #### 参数配置化
 所以我们可以考虑将参数配置转移到 application.properties 这个配置文件中。
 
-```
-aliyun.oss.endpoint = https://oss-cn-beijing.aliyuncs.com  
-aliyun.oss.accessKeyId = LTAI5t9ETp3Yfjcae8L1gV5p  
-aliyun.oss.accessKeySecret = uRMzCa1s3VlnJnA3FyAp99JNGAM0PA  
-aliyun.oss.bucketName = hmleadnews-kane
-```
+
 
 ```java
 @Value("${aliyun.oss.endpoint}")  
